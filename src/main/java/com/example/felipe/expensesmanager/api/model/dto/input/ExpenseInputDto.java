@@ -1,6 +1,7 @@
 package com.example.felipe.expensesmanager.api.model.dto.input;
 
 import com.example.felipe.expensesmanager.domain.model.enums.Card;
+import com.example.felipe.expensesmanager.domain.model.enums.PaymentMethod;
 import com.example.felipe.expensesmanager.domain.model.enums.ExpenseType;
 import com.example.felipe.expensesmanager.domain.model.enums.Username;
 import lombok.Getter;
@@ -25,6 +26,7 @@ public class ExpenseInputDto implements Serializable {
 
     @NotNull
     private ExpenseType expenseType;
+    private PaymentMethod paymentMethod;
     private Card card;
     private Boolean isParceled = false;
     private Integer installment = 0;
