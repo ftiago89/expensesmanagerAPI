@@ -25,7 +25,7 @@ public class Expense implements Serializable {
     private ExpenseType expenseType;
     private Card card;
     private Boolean isParceled;
-    private Installment installment;
+    private Integer installment;
     private Boolean isRecurrent;
     private String location;
     private OffsetDateTime date;

@@ -4,5 +4,16 @@ import lombok.Getter;
 
 @Getter
 public enum ExpenseType {
-    LAZER, EMERGENCIA, REMEDIO, GASTO_PESSOAL, CONTA, OUTRO
+    LAZER,
+    EMERGENCIA,
+    GASTO_PETS,
+    VIAGEM,
+    COMIDA,
+    MERCADO,
+    REMEDIO,
+    GASTO_PESSOAL,
+    CONTA,
+    INVESTIMENTO,
+    GASTO_MEDICO,
+    OUTRO
 }

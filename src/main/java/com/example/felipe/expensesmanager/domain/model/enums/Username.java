@@ -4,5 +4,7 @@ import lombok.Getter;
 
 @Getter
 public enum Username {
-    FELIPE, LIVIA, OTHER
+    FELIPE,
+    LIVIA,
+    OTHER
 }
