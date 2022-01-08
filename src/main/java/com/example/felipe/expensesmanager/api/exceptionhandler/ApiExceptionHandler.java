@@ -1,6 +1,7 @@
 package com.example.felipe.expensesmanager.api.exceptionhandler;
 
 import com.example.felipe.expensesmanager.domain.exception.BusinessException;
+import com.example.felipe.expensesmanager.domain.exception.EntityNotFoundException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import com.fasterxml.jackson.databind.exc.PropertyBindingException;
@@ -87,6 +88,17 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
                 .build();
 
         return handleExceptionInternal(ex, errorBody, headers, status, request);
+    }
+
+    @ExceptionHandler(EntityNotFoundException.class)
+    public ResponseEntity<Object> handleEntityNotFound(EntityNotFoundException ex, WebRequest request) {
+
+        String detail = ex.getMessage();
+        var errorBody = createErrorBodyBuild(HttpStatus.NOT_FOUND, ErrorType.RESOURCE_NOT_FOUND, detail)
+                .userMessage(detail)
+                .build();
+
+        return handleExceptionInternal(ex, errorBody, new HttpHeaders(), HttpStatus.NOT_FOUND, request);
     }
 
     //excecoes das regras de negocio
