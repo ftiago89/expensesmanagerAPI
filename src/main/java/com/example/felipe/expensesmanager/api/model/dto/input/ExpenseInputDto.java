@@ -1,5 +1,9 @@
 package com.example.felipe.expensesmanager.api.model.dto.input;
 
+import com.example.felipe.expensesmanager.api.model.dto.InstallmentDto;
+import com.example.felipe.expensesmanager.domain.model.enums.Card;
+import com.example.felipe.expensesmanager.domain.model.enums.ExpenseType;
+import com.example.felipe.expensesmanager.domain.model.enums.Username;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,19 +21,17 @@ import java.time.OffsetDateTime;
 public class ExpenseInputDto implements Serializable {
     private static final long serialVersionUID = 4571800257091856777L;
 
+    private Username username;
+
     @NotNull
     @PositiveOrZero
     private Long value;
     private String description;
-    private String type;
-    private String card;
+    private ExpenseType expenseType;
+    private Card card;
     private Boolean isParceled;
-    private Integer installment;
-    private Integer numberOfInstallments;
-    private String firstInstallmentMonth;
-    private String lastInstallmentMonth;
+    private InstallmentDto installment;
     private Boolean isRecurrent;
-    private String registorName;
     private String location;
     private OffsetDateTime date;
 }
