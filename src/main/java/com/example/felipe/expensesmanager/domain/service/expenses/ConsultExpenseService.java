@@ -13,6 +13,6 @@ public class ConsultExpenseService {
     private ExpenseRepository expenseRepository;
 
     public Expense execute(String id) {
-        return expenseRepository.findById(id).orElseThrow(() -> new ExpenseNotFoundException(id));
+        return expenseRepository.findById(id).orElseThrow(ExpenseNotFoundException::new);
     }
 }
