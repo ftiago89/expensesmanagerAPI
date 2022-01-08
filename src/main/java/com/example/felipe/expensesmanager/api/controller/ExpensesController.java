@@ -45,9 +45,10 @@ public class ExpensesController {
 
     @GetMapping(value = "/byInterval")
     @ResponseStatus(value = HttpStatus.OK)
-    public List<Expense> findOne(@RequestParam(value = "from") @DateTimeFormat(pattern = "yyyy-MM-dd") Date from,
+    public List<ExpenseOutputDto> findAllByTimeInterval(@RequestParam(value = "from") @DateTimeFormat(pattern = "yyyy-MM-dd") Date from,
                                  @RequestParam(value = "to") @DateTimeFormat(pattern = "yyyy-MM-dd") Date to) {
-        return  listExpenseByTimeIntervalService.execute(from, to);
+        List<Expense> expenses =  listExpenseByTimeIntervalService.execute(from, to);
+        return expenseOutputDtoAssembler.toCollectionDto(expenses);
     }
 
     @PostMapping
