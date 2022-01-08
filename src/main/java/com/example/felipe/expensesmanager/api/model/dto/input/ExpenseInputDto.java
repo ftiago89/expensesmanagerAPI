@@ -33,5 +33,4 @@ public class ExpenseInputDto implements Serializable {
     private InstallmentDto installment;
     private Boolean isRecurrent;
     private String location;
-    private OffsetDateTime date;
 }
