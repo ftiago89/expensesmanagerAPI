@@ -8,6 +8,7 @@ import com.example.felipe.expensesmanager.domain.model.Expense;
 import com.example.felipe.expensesmanager.domain.service.expenses.ConsultExpenseService;
 import com.example.felipe.expensesmanager.domain.service.expenses.InsertExpenseService;
 import com.example.felipe.expensesmanager.domain.service.expenses.ListExpenseByTimeIntervalService;
+import com.example.felipe.expensesmanager.domain.service.expenses.RemoveExpenseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
@@ -29,6 +30,9 @@ public class ExpensesController {
 
     @Autowired
     private ListExpenseByTimeIntervalService listExpenseByTimeIntervalService;
+
+    @Autowired
+    private RemoveExpenseService removeExpenseService;
 
     @Autowired
     private ExpenseInputDtoDisassembler expenseInputDtoDisassembler;
@@ -53,8 +57,14 @@ public class ExpensesController {
 
     @PostMapping
     @ResponseStatus(value = HttpStatus.CREATED)
-    public ExpenseOutputDto save(@Valid @RequestBody ExpenseInputDto expenseInputDto) {
+    public ExpenseOutputDto saveOne(@Valid @RequestBody ExpenseInputDto expenseInputDto) {
         var expense = insertExpenseService.execute(expenseInputDtoDisassembler.toModel(expenseInputDto));
         return expenseOutputDtoAssembler.toDto(expense);
+    }
+
+    @DeleteMapping(value = "/{expenseId}")
+    @ResponseStatus(value = HttpStatus.NO_CONTENT)
+    public void deleteOne(@PathVariable(value = "expenseId") String id) {
+        removeExpenseService.execute(id);
     }
 }
