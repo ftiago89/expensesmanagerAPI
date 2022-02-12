@@ -1,8 +1,7 @@
 package com.example.felipe.expensesmanager.domain.model;
 
-import com.example.felipe.expensesmanager.domain.model.enums.Card;
-import com.example.felipe.expensesmanager.domain.model.enums.PaymentMethod;
 import com.example.felipe.expensesmanager.domain.model.enums.ExpenseType;
+import com.example.felipe.expensesmanager.domain.model.enums.PaymentMethod;
 import com.example.felipe.expensesmanager.domain.model.enums.Username;
 import lombok.Getter;
 import lombok.Setter;
@@ -25,7 +24,6 @@ public class Expense implements Serializable {
     private String description;
     private ExpenseType expenseType;
     private PaymentMethod paymentMethod;
-    private Card card;
     private Boolean isParceled;
     private Integer installment;
     private Boolean isRecurrent;

@@ -21,7 +21,6 @@ public class ExpenseOutputDto implements Serializable {
     private String description;
     private ExpenseType expenseType;
     private PaymentMethod paymentMethod;
-    private Card card;
     private Boolean isParceled;
     private Integer installment;
     private Boolean isRecurrent;
